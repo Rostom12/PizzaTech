@@ -1,0 +1,39 @@
+name: CI - Backend
+
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: backend
+
+    env:
+      DATABASE_URL: "file:./dev.db"
+
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Installer pnpm
+        run: npm install -g pnpm
+
+      - name: Installer les dépendances
+        run: pnpm install
+
+      - name: Générer la base de données test
+        run: pnpm exec prisma db push
+
+      - name: Lancer les tests
+        run: pnpm run test
