@@ -1,0 +1,26 @@
+/* frontend/src/components/Footer/Footer.module.scss */
+
+.footer {
+  padding: 2rem;
+  background-color: #fafafa;
+  border-top: 1px solid #eee;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.footerLinks {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.footerLinks a {
+  color: #888;
+  text-decoration: none;
+}
+
+.footerLinks a:hover {
+  color: #ff6600;
+}
